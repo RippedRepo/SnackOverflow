@@ -1,13 +1,38 @@
-﻿@if (Model != null)
+﻿@model IEnumerable<ProjectDemoRecipes.Models.Recipe>
+
+<h2>Recipes</h2>
+
+<!-- Filtering Form -->
+<form method="get" asp-action="Index">
+    <div>
+        <label>
+            <input type="checkbox" name="isVegetarian" value="true"
+            @(ViewContext.HttpContext.Request.Query["isVegetarian"] == "true" ? "checked" : "") />
+            Vegetarian
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" name="isLactoseFree" value="true"
+            @(ViewContext.HttpContext.Request.Query["isLactoseFree"] == "true" ? "checked" : "") />
+            Lactose-Free
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+    <a asp-action="Index" class="btn btn-secondary">Reset</a>
+</form>
+
+<!-- Recipes Table -->
+@if (Model != null && Model.Any())
 {
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Cooking Time</th>
                 <th>Vegetarian</th>
                 <th>Lactose-Free</th>
-                <th></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>

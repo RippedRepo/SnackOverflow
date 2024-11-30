@@ -15,10 +15,21 @@ namespace ProjectDemoRecipes.Controllers
         }
 
         // GET: Recipes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool? isVegetarian, bool? isLactoseFree)
         {
-            var recipes = await _context.Recipes.ToListAsync(); // Fetch all recipes
-            return View(recipes); // Pass the list to the view
+            var recipes = _context.Recipes.AsQueryable();
+
+            if (isVegetarian.HasValue)
+            {
+                recipes = recipes.Where(r => r.IsVegetarian == isVegetarian.Value);
+            }
+
+            if (isLactoseFree.HasValue)
+            {
+                recipes = recipes.Where(r => r.IsLactoseFree == isLactoseFree.Value);
+            }
+
+            return View(await recipes.ToListAsync());
         }
 
         // GET: Recipes/Details/5
