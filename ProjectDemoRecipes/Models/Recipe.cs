@@ -13,6 +13,6 @@
         
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
-        public List<Review> Reviews { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

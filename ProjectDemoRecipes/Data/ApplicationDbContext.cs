@@ -61,8 +61,19 @@ namespace ProjectDemoRecipes.Data
            IsVegetarian = true,
            IsLactoseFree = false,
            ImageUrl = "lasagna.jpg"
+       },
+
+       new Recipe
+       {
+           Id = 3,
+           Title = "Ikea Meatballs",
+           Description = "Meatballs with mashed potatoes and lingonberry jam",
+           CookingTime = 50,
+           IsVegetarian = false,
+           IsLactoseFree = false,
+           ImageUrl = "ikeameatballs.jpg"
        }
-   
+
     );
         }
 

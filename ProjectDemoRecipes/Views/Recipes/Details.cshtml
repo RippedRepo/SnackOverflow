@@ -1,0 +1,23 @@
+﻿@model ProjectDemoRecipes.Models.Recipe
+
+<h2>@Model.Title</h2>
+
+<div class="card mb-4">
+    <div class="card-header">
+        Recipe Details
+    </div>
+    <div class="card-body">
+        <img src="@Model.ImageUrl" alt="Recipe Image" class="img-fluid mb-3"
+             onerror="this.onerror=null;this.src='/images/placeholder.png';" />
+
+        <p><strong>Description:</strong> @Model.Description</p>
+        <p><strong>Cooking Time:</strong> @Model.CookingTime minutes</p>
+        <p><strong>Vegetarian:</strong> @(Model.IsVegetarian ? "Yes" : "No")</p>
+        <p><strong>Lactose-Free:</strong> @(Model.IsLactoseFree ? "Yes" : "No")</p>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" class="btn btn-secondary">Back to Recipes</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Recipe</a>
+    </div>
+</div>
+
