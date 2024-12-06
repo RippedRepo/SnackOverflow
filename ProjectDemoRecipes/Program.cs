@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 // Add DbContext configuration here (move this above `var app = builder.Build();`)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 
 var app = builder.Build();
 
